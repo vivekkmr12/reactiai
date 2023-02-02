@@ -1,0 +1,21 @@
+{
+   "background": {
+      "service_worker": "background.js"
+   },
+   "content_scripts": [ {
+      "js": [ "content-script.js" ],
+      "css": [ "style.css" ],
+      "matches": [ "https://twitter.com/*","https://www.linkedin.com/*"],
+      "run_at": "document_start"
+   } ],
+   "description": "Extension for auto-replying using Chat-GPT",
+   "icons": {
+      "128": "icons/128.png",
+      "16": "icons/16.png",
+      "48": "icons/48.png"
+   },
+   "manifest_version": 3,
+   "name": "Reacti AI",
+   "permissions": [],
+   "version": "1.0.3"
+}
