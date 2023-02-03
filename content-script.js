@@ -552,10 +552,10 @@ function populateOptionsAndListeners(linkedinEditor) {
     selectEl.appendChild(optionEl);
   });
   selectEl.addEventListener("change", (e) => {
-    if(linkedinEditor){
-      handleLinkedinSubmit(e.target.value,linkedinEditor,e.target);
+    if (linkedinEditor) {
+      handleLinkedinSubmit(e.target.value, linkedinEditor, e.target);
       selectEl.selectedIndex = 0;
-      return ;
+      return;
     }
     handleSubmit(e.target.value);
     selectEl.selectedIndex = 0;
@@ -564,8 +564,8 @@ function populateOptionsAndListeners(linkedinEditor) {
   toneBtns.forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const selectedTone = btn.dataset.tone;
-      if(linkedinEditor){
-        return handleLinkedinSubmit(selectedTone,linkedinEditor,e.target)
+      if (linkedinEditor) {
+        return handleLinkedinSubmit(selectedTone, linkedinEditor, e.target);
       }
       handleSubmit(selectedTone);
     });
@@ -657,10 +657,10 @@ function removeLoading() {
   });
   func(document.querySelector("#_responsively_tone_picker"));
 }
-function handleLinkedinSubmit(tone, editorEl,clickedButton) {
+function handleLinkedinSubmit(tone, editorEl, clickedButton) {
   debug("Data submitted with tone: " + tone);
 
-  let data= {tone}
+  let data = { tone };
   text = getLinkedInText(clickedButton);
 
   if (!text) {
@@ -714,22 +714,36 @@ const embedButtons = () => {
 
 const updateInput = (newText, linkedinElem) => {
   if (linkedinElem) {
-    linkedinElem.innerHTML = "<p>" + newText + "</p>";
+    let text = "";
+    newText.split(" ").forEach((word,i) => {
+      setTimeout(() => {
+        text += word + " ";
+        linkedinElem.innerHTML = "<p>" + text + "</p>";
+      }, i * 150);
+    });
+
     return;
   }
   const input = document.querySelector('[data-testid="tweetTextarea_0"]');
 
-  const data = new DataTransfer();
-  data.setData("text/plain", newText);
-  input.dispatchEvent(
-    new ClipboardEvent("paste", {
-      dataType: "text/plain",
-      data: newText,
-      bubbles: true,
-      clipboardData: data,
-      cancelable: true,
-    })
-  );
+  const func = (text) => {
+    const data = new DataTransfer();
+    data.setData("text/plain", text);
+    input.dispatchEvent(
+      new ClipboardEvent("paste", {
+        dataType: "text/plain",
+        data: text,
+        bubbles: true,
+        clipboardData: data,
+        cancelable: true,
+      })
+    );
+  };
+  newText.split(" ").forEach((text, i) => {
+    setTimeout(() => {
+      func(text + " ");
+    }, i * 150);
+  });
 };
 
 // linkedin
