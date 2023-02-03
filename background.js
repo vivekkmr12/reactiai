@@ -11,15 +11,14 @@ chrome.runtime.onConnect.addListener(function(port) {
 })
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.text && request.sentiment && request.tone) {
-    fetch(remoteURL, {
+  if (request.text && request.tone) {
+    fetch(remoteURL  , {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         text: request.text,
-        sentiment: request.sentiment,
         tone: request.tone
       })
     })
