@@ -685,9 +685,16 @@ function handleSubmit(tone) {
 }
 
 const embedButtons = () => {
-  const isContainerEmbedded = document.getElementById(
+  let isContainerEmbedded = document.getElementById(
     "_responsively_container"
   );
+  const toolBars = document.querySelectorAll('[data-testid="toolBar"]')
+  if(toolBars.length===1 && window.location.href.includes("twitter.com/home")){
+    if(isContainerEmbedded){
+      isContainerEmbedded.remove();
+    }
+    return;
+  }
   if (isContainerEmbedded) {
     return;
   }
