@@ -435,7 +435,7 @@ const optionData = [
   }
 ]
 function debug(msg) {
-  console.log("Debug message: ", msg);
+    console.log("Debug message: ", msg);
 }
 const htmlSnippet = `<div class="_responsively_wrapper">
 <div class="_responsively_btn_wrapper">
@@ -488,7 +488,7 @@ function populateOptionsAndListeners(linkedinEditor) {
 function sendServerRequest(data, editorEl) {
   addLoading();
   chrome.runtime.sendMessage(data, function (response) {
-    updateInput(response, editorEl);
+    updateInput(response.reply, editorEl);
     removeLoading();
   });
 }
@@ -510,7 +510,6 @@ function findCurrentTweetText() {
       modalText.querySelector('[data-testid="tweet"]')
     : null;
   let textRaw = null;
-
   if (modalText) {
     textRaw = textNodesUnder(modalText);
   } else {
@@ -521,7 +520,7 @@ function findCurrentTweetText() {
     // check if it's active tweet (node has font size 14px)
     const tweetTextNode = Array.from(tweetTextNodeList).filter((node) => {
       const styles = getComputedStyle(node);
-      return parseInt(styles.fontSize) > 20;
+      return parseInt(styles.fontSize) > 14;
     });
 
     if (tweetTextNode.length > 0) {
@@ -605,12 +604,14 @@ const embedButtons = () => {
     toolBars.length === 1 &&
     window.location.href.includes("twitter.com/home")
   ) {
+
     if (isContainerEmbedded) {
       isContainerEmbedded.remove();
     }
     return;
   }
   if (isContainerEmbedded) {
+
     return;
   }
   const toolbar = document.querySelector('[data-testid="toolBar"]');
@@ -699,15 +700,13 @@ const embedLinkedinButtons = () => {
 
 // check whether it's linkedin or twitter
 chrome.runtime.sendMessage({ type: "getCookie" }, function (res) {
-  localStorage.setItem("cheese","cheese")
   if(!res){
-    return console.log("not logged in");
   }
   if (window.location.origin.includes("twitter.com")) {
-    setInterval(embedButtons, 100);
+    setInterval(embedButtons, 500);
   } else if (window.location.origin.includes("linkedin.com")) {
     setInterval(() => {
       embedLinkedinButtons();
-    }, 100);
+    }, 500);
   }
 });

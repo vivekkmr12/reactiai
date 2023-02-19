@@ -14,15 +14,15 @@ useEffect(()=>{
 useEffect(()=>{
   (async ()=>{
     setLoading(true)
-  const accessTokenCookie =await chrome?.cookies?.get({
+  const fbSessionCookie =await chrome?.cookies?.get({
     url:import.meta.env.VITE_HOST_URL,
-    name:"fb-access-token"
+    name:"fb-session"
   })
-  if(!accessTokenCookie || !accessTokenCookie.value){
+  if(!fbSessionCookie || !fbSessionCookie.value){
     setLoading(false)
-    return console.log("No cookie found",{accessTokenCookie})
+    return console.log("No cookie found",{fbSessionCookie})
   }
-  const res = await fetch(import.meta.env.VITE_SERVER_URL + "/check",{headers:{"access-token":accessTokenCookie?.value}})
+  const res = await fetch(import.meta.env.VITE_SERVER_URL + "/checkauth",{headers:{"fb-session":fbSessionCookie?.value}})
   const response = await res.json();
   console.log({responseFromTokenCheck:response});
   if(response.success){
@@ -34,7 +34,7 @@ useEffect(()=>{
   })()
 },[])
 const handleLogin = ()=>{
-  chrome?.tabs?.create({active: true, url: import.meta.env.VITE_HOST_URL});
+  chrome?.tabs?.create({active: true, url: import.meta.env.VITE_HOST_URL+"/login"});
 }
 
 if(!isAuthenticated){
