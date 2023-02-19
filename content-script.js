@@ -4,522 +4,436 @@ let isLoading = false;
 let isLinkedIn = window.location.origin.includes("linkedin.com");
 const optionData = [
   {
-    value: "formal",
-    label: "Formal",
-    description:
-      "A businessperson speaking to a client, a teacher addressing a student, or a politician giving a speech.",
+      value: "adoring",
+      label: "Adoring",
+      description: "A person speaking with admiration and affection, often because they are expressing love for someone."
   },
   {
-    value: "informal",
-    label: "Informal",
-    description:
-      "Friends chatting with each other, a family member catching up with a relative, or coworkers discussing a project.",
+      value: "adventurous",
+      label: "Adventurous",
+      description: "A person speaking with excitement and enthusiasm, often because they are looking forward to a new experience or challenge."
   },
   {
-    value: "rude",
-    label: "Rude",
-    description:
-      "Someone interrupting another person, speaking in a condescending tone, or using offensive language.",
+      value: "amiable",
+      label: "Amiable",
+      description: "A person speaking in a friendly or warm manner, often because they want to make a good impression or get along with someone."
   },
   {
-    value: "polite",
-    label: "Polite",
-    description:
-      "A customer thanking a shopkeeper, a guest thanking a host, or a colleague asking for a favor in a respectful manner.",
+      value: "amused",
+      label: "Amused",
+      description: "A person speaking with amusement or laughter, often because they find something funny or entertaining."
   },
   {
-    value: "sarcastic",
-    label: "Sarcastic",
-    description:
-      "A person using irony to mock or criticize someone or something, often in a humorous way.",
+      value: "angry",
+      label: "Angry",
+      description: "A person expressing anger or frustration through their words, tone of voice, or body language."
   },
   {
-    value: "earnest",
-    label: "Earnest",
-    description:
-      "A person speaking sincerely and with genuine emotion, often about something they care deeply about.",
+      value: "apologetic",
+      label: "Apologetic",
+      description: "A person expressing regret or remorse, often to apologize for something they have done wrong."
   },
   {
-    value: "sincere",
-    label: "Sincere",
-    description:
-      "Honest and genuine, often using language or behavior that is earnest and heartfelt.",
+      value: "appreciative",
+      label: "Appreciative",
+      description: "A person speaking with gratitude and appreciation, often to thank someone for something they have done."
   },
   {
-    value: "pleading",
-    label: "Pleading",
-    description:
-      "A person begging or imploring someone to do something, often in a desperate or emotional way.",
+      value: "assertive",
+      label: "Assertive",
+      description: "A person speaking confidently and directly, often in order to stand up for themselves or make a request."
   },
   {
-    value: "persuasive",
-    label: "Persuasive",
-    description:
-      "A person trying to convince another person to believe or do something, often by providing evidence or reasoning.",
+      value: "astonished",
+      label: "Astonished",
+      description: "A person speaking in a surprised or shocked manner, often because they are amazed or impressed by something."
   },
   {
-    value: "condescending",
-    label: "Condescending",
-    description:
-      "A person speaking in a way that implies they think they are superior to the person they are talking to.",
+      value: "boomer",
+      label: "Boomer",
+      description: "A person speaking in a wise and experienced manner, often because they are older and have seen a lot in their life."
   },
   {
-    value: "sympathetic",
-    label: "Sympathetic",
-    description:
-      "A person expressing compassion or understanding towards someone who is going through a difficult time.",
+      value: "calm",
+      label: "Calm",
+      description: "A person speaking in a relaxed and collected manner, often in order to ease tension or stress in a situation."
   },
   {
-    value: "supportive",
-    label: "Supportive",
-    description:
-      "A person offering encouragement, help, or advice to someone who is facing a challenge or making a decision.",
+      value: "cautious",
+      label: "Cautious",
+      description: "A person speaking in a careful or measured way, often because they are unsure of how the other person will react."
   },
   {
-    value: "critical",
-    label: "Critical",
-    description:
-      "A person pointing out flaws or shortcomings in someones ideas, actions, or performance.",
+      value: "complimentary",
+      label: "Complimentary",
+      description: "A person praising or complimenting someone for their achievements, talents, or appearance."
   },
   {
-    value: "complimentary",
-    label: "Complimentary",
-    description:
-      "A person praising or complimenting someone for their achievements, talents, or appearance.",
+      value: "condescending",
+      label: "Condescending",
+      description: "A person speaking in a way that implies they think they are superior to the person they are talking to."
   },
   {
-    value: "flirtatious",
-    label: "Flirtatious",
-    description:
-      "A person using playful or suggestive language to express romantic or sexual interest in someone.",
+      value: "condescending",
+      label: "Condescending",
+      description: "A person speaking in a way that implies they think they are superior to the person they are talking to."
   },
   {
-    value: "angry",
-    label: "Angry",
-    description:
-      "A person expressing anger or frustration through their words, tone of voice, or body language.",
+      value: "condolent",
+      label: "Condolent",
+      description: "A person expressing sorrow or sympathy, often in response to someone’s loss or misfortune."
   },
   {
-    value: "frightened",
-    label: "Frightened",
-    description:
-      "A person speaking in a scared or nervous tone, often because they are in a dangerous or threatening situation.",
+      value: "confident",
+      label: "Confident",
+      description: "A person speaking with assurance or self-belief, often because they have faith in themselves or their abilities."
   },
   {
-    value: "envious",
-    label: "Envious",
-    description:
-      "A person expressing jealousy or resentment towards someone who has something they want or admire.",
+      value: "confused",
+      label: "Confused",
+      description: "A person speaking in a hesitant or uncertain manner, often because they dont understand something."
   },
   {
-    value: "insulting",
-    label: "Insulting",
-    description:
-      "A person using hurtful or offensive language to belittle or disrespect someone.",
+      value: "contemplative",
+      label: "Contemplative",
+      description: "A person speaking in a thoughtful or introspective manner, often because they are considering a difficult decision or problem."
   },
   {
-    value: "impatient",
-    label: "Impatient",
-    description:
-      "A person speaking in a hurried or frustrated manner, often because they want something to happen quickly.",
+      value: "content",
+      label: "Content",
+      description: "A person speaking in a satisfied or peaceful manner, often because they are happy with how things are going."
   },
   {
-    value: "confused",
-    label: "Confused",
-    description:
-      "A person speaking in a hesitant or uncertain manner, often because they dont understand something.",
+      value: "critical",
+      label: "Critical",
+      description: "A person pointing out flaws or shortcomings in someones ideas, actions, or performance."
   },
   {
-    value: "disinterested",
-    label: "Disinterested",
-    description:
-      "A person speaking in a bored or uninterested tone, often because they dont care about the topic of conversation.",
+      value: "desperate",
+      label: "Desperate",
+      description: "A person speaking urgently or desperately, often because they want something to happen quickly or they are in a difficult situation."
   },
   {
-    value: "indignant",
-    label: "Indignant",
-    description:
-      "A person expressing outrage or disbelief, often because they feel they have been wronged or treated unfairly.",
+      value: "despondent",
+      label: "Despondent",
+      description: "A person speaking in a hopeless or despairing manner, often because they feel like they have no options or solutions."
   },
   {
-    value: "intimidating",
-    label: "Intimidating",
-    description:
-      "A person speaking in a threatening or aggressive manner, often in order to scare or bully someone.",
+      value: "determined",
+      label: "Determined",
+      description: "A person speaking with resolve and perseverance, often because they are committed to achieving something."
   },
   {
-    value: "intimate",
-    label: "Intimate",
-    description:
-      "A person speaking in a soft or tender tone, often because they are sharing personal or emotional information with someone.",
+      value: "dignified",
+      label: "Dignified",
+      description: "A person speaking with poise or grace, often because they are trying to maintain a sense of composure or respect."
   },
   {
-    value: "cautious",
-    label: "Cautious",
-    description:
-      "A person speaking in a careful or measured way, often because they are unsure of how the other person will react.",
+      value: "disappointed",
+      label: "Disappointed",
+      description: "A person expressing dissatisfaction or discouragement, often because something didnt happen or turn out the way they wanted."
   },
   {
-    value: "intrigued",
-    label: "Intrigued",
-    description:
-      "A person speaking in a curious or interested tone, often because they want to learn more about something.",
+      value: "disdainful",
+      label: "Disdainful",
+      description: "A person speaking with contempt or scorn, often to express disapproval of someone or something."
   },
   {
-    value: "fascinated",
-    label: "Fascinated",
-    description:
-      "A person speaking with excitement and wonder, often because they are learning about something new or interesting.",
+      value: "disinterested",
+      label: "Disinterested",
+      description: "A person speaking in a bored or uninterested tone, often because they dont care about the topic of conversation."
   },
   {
-    value: "suspicious",
-    label: "Suspicious",
-    description:
-      "A person speaking in a wary or skeptical tone, often because they dont trust the other person or believe what they are saying.",
+      value: "dismissive",
+      label: "Dismissive",
+      description: "A person speaking in a dismissive or contemptuous manner, often because they dont think something is important or worth discussing."
   },
   {
-    value: "contemplative",
-    label: "Contemplative",
-    description:
-      "A person speaking in a thoughtful or introspective manner, often because they are considering a difficult decision or problem.",
+      value: "doubtful",
+      label: "Doubtful",
+      description: "A person speaking skeptically or hesitantly, often because they are uncertain about something."
   },
   {
-    value: "enthusiastic",
-    label: "Enthusiastic",
-    description:
-      "A person speaking with energy and enthusiasm, often because they are excited about something.",
+      value: "dreamy",
+      label: "Dreamy",
+      description: "A person speaking in a thoughtful or romantic manner, often because they are lost in thought or imagining something."
   },
   {
-    value: "encouraging",
-    label: "Encouraging",
-    description:
-      "A person speaking with support and positivity, often in order to motivate or inspire someone.",
+      value: "dubious",
+      label: "Dubious",
+      description: "A person speaking skeptically or doubtfully, often because they dont trust or believe something."
   },
   {
-    value: "calm",
-    label: "Calm",
-    description:
-      "A person speaking in a relaxed and collected manner, often in order to ease tension or stress in a situation.",
+      value: "earnest",
+      label: "Earnest",
+      description: "A person speaking sincerely and with genuine emotion, often about something they care deeply about."
   },
   {
-    value: "humorous",
-    label: "Humorous",
-    description:
-      "A person speaking with humor or wit, often in order to entertain or amuse the other person.",
+      value: "encouraging",
+      label: "Encouraging",
+      description: "A person speaking with support and positivity, often in order to motivate or inspire someone."
   },
   {
-    value: "appreciative",
-    label: "Appreciative",
-    description:
-      "A person speaking with gratitude and appreciation, often to thank someone for something they have done.",
+      value: "energetic",
+      label: "Energetic",
+      description: "A person speaking with enthusiasm, often because they are excited or motivated by something."
   },
   {
-    value: "worried",
-    label: "Worried",
-    description:
-      "A person speaking with concern or anxiety, often because they are worried about something.",
+      value: "enthusiastic",
+      label: "Enthusiastic",
+      description: "A person speaking with energy and enthusiasm, often because they are excited about something."
   },
   {
-    value: "passionate",
-    label: "Passionate",
-    description:
-      "A person speaking with intensity or emotion, often because they are strongly invested in something.",
+      value: "envious",
+      label: "Envious",
+      description: "A person expressing jealousy or resentment towards someone who has something they want or admire."
   },
   {
-    value: "dismissive",
-    label: "Dismissive",
-    description:
-      "A person speaking in a dismissive or contemptuous manner, often because they dont think something is important or worth discussing.",
+      value: "exasperated",
+      label: "Exasperated",
+      description: "A person speaking in an irritated or frustrated manner, often because they are fed up with something."
   },
   {
-    value: "condolent",
-    label: "Condolent",
-    description:
-      "A person expressing sorrow or sympathy, often in response to someone’s loss or misfortune.",
+      value: "fascinated",
+      label: "Fascinated",
+      description: "A person speaking with excitement and wonder, often because they are learning about something new or interesting."
   },
   {
-    value: "romantic",
-    label: "Romantic",
-    description:
-      "A person expressing love or admiration, often in a poetic or heartfelt way.",
+      value: "firm",
+      label: "Firm",
+      description: "A person speaking in a determined and resolute manner, often to make a point or defend a position."
   },
   {
-    value: "hopeful",
-    label: "Hopeful",
-    description:
-      "A person speaking optimistically, often because they believe something good will happen.",
+      value: "flirtatious",
+      label: "Flirtatious",
+      description: "A person using playful or suggestive language to express romantic or sexual interest in someone."
   },
   {
-    value: "humble",
-    label: "Humble",
-    description:
-      "A person speaking modestly or humbly, often to recognize their limitations or the achievements of others.",
+      value: "forgiving",
+      label: "Forgiving",
+      description: "A person expressing compassion or understanding, often to forgive someone for something they have done wrong."
   },
   {
-    value: "assertive",
-    label: "Assertive",
-    description:
-      "A person speaking confidently and directly, often in order to stand up for themselves or make a request.",
+      value: "formal",
+      label: "Formal",
+      description: "A businessperson speaking to a client, a teacher addressing a student, or a politician giving a speech."
   },
   {
-    value: "doubtful",
-    label: "Doubtful",
-    description:
-      "A person speaking skeptically or hesitantly, often because they are uncertain about something.",
+      value: "friendly",
+      label: "Friendly",
+      description: "A person speaking in a warm and welcoming manner, often to make someone feel comfortable or welcome."
   },
   {
-    value: "amused",
-    label: "Amused",
-    description:
-      "A person speaking with amusement or laughter, often because they find something funny or entertaining.",
+      value: "frightened",
+      label: "Frightened",
+      description: "A person speaking in a scared or nervous tone, often because they are in a dangerous or threatening situation."
   },
   {
-    value: "firm",
-    label: "Firm",
-    description:
-      "A person speaking in a determined and resolute manner, often to make a point or defend a position.",
+      value: "genZ",
+      label: "Gen Z",
+      description: "A person speaking in a casual and relaxed manner, often because they are young and up to date on the latest trends and technology."
   },
   {
-    value: "apologetic",
-    label: "Apologetic",
-    description:
-      "A person expressing regret or remorse, often to apologize for something they have done wrong.",
+      value: "gloomy",
+      label: "Gloomy",
+      description: "A person speaking in a depressed or pessimistic manner, often because they are feeling down or pessimistic."
   },
   {
-    value: "wistful",
-    label: "Wistful",
-    description:
-      "A person speaking in a melancholic or nostalgic manner, often because they are thinking about something they miss.",
+      value: "grateful",
+      label: "Grateful",
+      description: "A person expressing thanks or appreciation, often because they are deeply thankful for something."
   },
   {
-    value: "desperate",
-    label: "Desperate",
-    description:
-      "A person speaking urgently or desperately, often because they want something to happen quickly or they are in a difficult situation.",
+      value: "guarded",
+      label: "Guarded",
+      description: "A person speaking cautiously or carefully, often because they are trying to avoid saying something they shouldnt."
   },
   {
-    value: "quizzical",
-    label: "Quizzical",
-    description:
-      "A person speaking in a puzzled or bewildered manner, often because they dont understand something.",
+      value: "hesitant",
+      label: "Hesitant",
+      description: "A person speaking uncertainly or hesitantly, often because they are afraid or unsure of what to do or say."
   },
   {
-    value: "dubious",
-    label: "Dubious",
-    description:
-      "A person speaking skeptically or doubtfully, often because they dont trust or believe something.",
+      value: "honest",
+      label: "Honest",
+      description: "A person speaking openly and truthfully, often because they are being sincere or direct."
   },
   {
-    value: "astonished",
-    label: "Astonished",
-    description:
-      "A person speaking in a surprised or shocked manner, often because they are amazed or impressed by something.",
+      value: "hopeful",
+      label: "Hopeful",
+      description: "A person speaking optimistically, often because they believe something good will happen."
   },
   {
-    value: "disdainful",
-    label: "Disdainful",
-    description:
-      "A person speaking with contempt or scorn, often to express disapproval of someone or something.",
+      value: "humble",
+      label: "Humble",
+      description: "A person speaking modestly or humbly, often to recognize their limitations or the achievements of others."
   },
   {
-    value: "reverent",
-    label: "Reverent",
-    description:
-      "A person speaking with respect or reverence, often because they are in a holy or sacred place or talking about something important.",
+      value: "humorous",
+      label: "Humorous",
+      description: "A person speaking with humor or wit, often in order to entertain or amuse the other person."
   },
   {
-    value: "hesitant",
-    label: "Hesitant",
-    description:
-      "A person speaking uncertainly or hesitantly, often because they are afraid or unsure of what to do or say.",
+      value: "impatient",
+      label: "Impatient",
+      description: "A person speaking in a hurried or frustrated manner, often because they want something to happen quickly."
   },
   {
-    value: "nervous",
-    label: "Nervous",
-    description:
-      "A person speaking in a shaky or jittery manner, often because they are anxious or afraid.",
+      value: "indignant",
+      label: "Indignant",
+      description: "A person expressing outrage or disbelief, often because they feel they have been wronged or treated unfairly."
   },
   {
-    value: "dreamy",
-    label: "Dreamy",
-    description:
-      "A person speaking in a thoughtful or romantic manner, often because they are lost in thought or imagining something.",
+      value: "informal",
+      label: "Informal",
+      description: "Friends chatting with each other, a family member catching up with a relative, or coworkers discussing a project."
   },
   {
-    value: "gloomy",
-    label: "Gloomy",
-    description:
-      "A person speaking in a depressed or pessimistic manner, often because they are feeling down or pessimistic.",
+      value: "inquisitive",
+      label: "Inquisitive",
+      description: "A person speaking in a curious or investigative manner, often because they want to learn more about something."
   },
   {
-    value: "confident",
-    label: "Confident",
-    description:
-      "A person speaking with assurance or self-belief, often because they have faith in themselves or their abilities.",
+      value: "insulting",
+      label: "Insulting",
+      description: "A person using hurtful or offensive language to belittle or disrespect someone."
   },
   {
-    value: "guarded",
-    label: "Guarded",
-    description:
-      "A person speaking cautiously or carefully, often because they are trying to avoid saying something they shouldnt.",
+      value: "intimate",
+      label: "Intimate",
+      description: "A person speaking in a soft or tender tone, often because they are sharing personal or emotional information with someone."
   },
   {
-    value: "playful",
-    label: "Playful",
-    description:
-      "A person speaking in a lighthearted or teasing manner, often in order to have fun or make someone laugh.",
+      value: "intimidating",
+      label: "Intimidating",
+      description: "A person speaking in a threatening or aggressive manner, often in order to scare or bully someone."
   },
   {
-    value: "inquisitive",
-    label: "Inquisitive",
-    description:
-      "A person speaking in a curious or investigative manner, often because they want to learn more about something.",
+      value: "intrigued",
+      label: "Intrigued",
+      description: "A person speaking in a curious or interested tone, often because they want to learn more about something."
   },
   {
-    value: "solemn",
-    label: "Solemn",
-    description:
-      "A person speaking in a serious or solemn manner, often because they are honoring or remembering someone or something.",
+      value: "lilting",
+      label: "Lilting",
+      description: "A person speaking in a soft and melodic manner, often because they are trying to soothe or comfort someone."
   },
   {
-    value: "adoring",
-    label: "Adoring",
-    description:
-      "A person speaking with admiration and affection, often because they are expressing love for someone.",
+      value: "millenial",
+      label: "Millenial",
+      description: "A person speaking in a confident and optimistic manner, often because they are young and open to new experiences."
   },
   {
-    value: "determined",
-    label: "Determined",
-    description:
-      "A person speaking with resolve and perseverance, often because they are committed to achieving something.",
+      value: "nervous",
+      label: "Nervous",
+      description: "A person speaking in a shaky or jittery manner, often because they are anxious or afraid."
   },
   {
-    value: "grateful",
-    label: "Grateful",
-    description:
-      "A person expressing thanks or appreciation, often because they are deeply thankful for something.",
+      value: "passionate",
+      label: "Passionate",
+      description: "A person speaking with intensity or emotion, often because they are strongly invested in something."
   },
   {
-    value: "resigned",
-    label: "Resigned",
-    description:
-      "A person speaking with acceptance or resignation, often because they have accepted a difficult situation or decision.",
+      value: "patient",
+      label: "Patient",
+      description: "A person speaking calmly and patiently, often because they are willing to wait or take their time with something."
   },
   {
-    value: "despondent",
-    label: "Despondent",
-    description:
-      "A person speaking in a hopeless or despairing manner, often because they feel like they have no options or solutions.",
+      value: "persuasive",
+      label: "Persuasive",
+      description: "A person trying to convince another person to believe or do something, often by providing evidence or reasoning."
   },
   {
-    value: "exasperated",
-    label: "Exasperated",
-    description:
-      "A person speaking in an irritated or frustrated manner, often because they are fed up with something.",
+      value: "playful",
+      label: "Playful",
+      description: "A person speaking in a lighthearted or teasing manner, often in order to have fun or make someone laugh."
   },
   {
-    value: "forgiving",
-    label: "Forgiving",
-    description:
-      "A person expressing compassion or understanding, often to forgive someone for something they have done wrong.",
+      value: "pleading",
+      label: "Pleading",
+      description: "A person begging or imploring someone to do something, often in a desperate or emotional way."
   },
   {
-    value: "reflective",
-    label: "Reflective",
-    description:
-      "A person speaking in a contemplative or introspective manner, often to think about something or consider a decision.",
+      value: "polite",
+      label: "Polite",
+      description: "A customer thanking a shopkeeper, a guest thanking a host, or a colleague asking for a favor in a respectful manner."
   },
   {
-    value: "disappointed",
-    label: "Disappointed",
-    description:
-      "A person expressing dissatisfaction or discouragement, often because something didnt happen or turn out the way they wanted.",
+      value: "quizzical",
+      label: "Quizzical",
+      description: "A person speaking in a puzzled or bewildered manner, often because they dont understand something."
   },
   {
-    value: "content",
-    label: "Content",
-    description:
-      "A person speaking in a satisfied or peaceful manner, often because they are happy with how things are going.",
+      value: "reflective",
+      label: "Reflective",
+      description: "A person speaking in a contemplative or introspective manner, often to think about something or consider a decision."
   },
   {
-    value: "adventurous",
-    label: "Adventurous",
-    description:
-      "A person speaking with excitement and enthusiasm, often because they are looking forward to a new experience or challenge.",
+      value: "resigned",
+      label: "Resigned",
+      description: "A person speaking with acceptance or resignation, often because they have accepted a difficult situation or decision."
   },
   {
-    value: "understanding",
-    label: "Understanding",
-    description:
-      "A person speaking with empathy or sympathy, often in order to help someone who is going through a difficult time.",
+      value: "reverent",
+      label: "Reverent",
+      description: "A person speaking with respect or reverence, often because they are in a holy or sacred place or talking about something important."
   },
   {
-    value: "amiable",
-    label: "Amiable",
-    description:
-      "A person speaking in a friendly or warm manner, often because they want to make a good impression or get along with someone.",
+      value: "romantic",
+      label: "Romantic",
+      description: "A person expressing love or admiration, often in a poetic or heartfelt way."
   },
   {
-    value: "dignified",
-    label: "Dignified",
-    description:
-      "A person speaking with poise or grace, often because they are trying to maintain a sense of composure or respect.",
+      value: "rude",
+      label: "Rude",
+      description: "Someone interrupting another person, speaking in a condescending tone, or using offensive language."
   },
   {
-    value: "condescending",
-    label: "Condescending",
-    description:
-      "A person speaking in a way that implies they think they are superior to the person they are talking to.",
+      value: "sarcastic",
+      label: "Sarcastic",
+      description: "A person using irony to mock or criticize someone or something, often in a humorous way."
   },
   {
-    value: "energetic",
-    label: "Energetic",
-    description:
-      "A person speaking with enthusiasm, often because they are excited or motivated by something.",
+      value: "sincere",
+      label: "Sincere",
+      description: "Honest and genuine, often using language or behavior that is earnest and heartfelt."
   },
   {
-    value: "honest",
-    label: "Honest",
-    description:
-      "A person speaking openly and truthfully, often because they are being sincere or direct.",
+      value: "solemn",
+      label: "Solemn",
+      description: "A person speaking in a serious or solemn manner, often because they are honoring or remembering someone or something."
   },
   {
-    value: "friendly",
-    label: "Friendly",
-    description:
-      "A person speaking in a warm and welcoming manner, often to make someone feel comfortable or welcome.",
+      value: "supportive",
+      label: "Supportive",
+      description: "A person offering encouragement, help, or advice to someone who is facing a challenge or making a decision."
   },
   {
-    value: "patient",
-    label: "Patient",
-    description:
-      "A person speaking calmly and patiently, often because they are willing to wait or take their time with something.",
+      value: "suspicious",
+      label: "Suspicious",
+      description: "A person speaking in a wary or skeptical tone, often because they dont trust the other person or believe what they are saying."
   },
   {
-    value: "genZ",
-    label: "Gen Z",
-    description:
-      "A person speaking in a casual and relaxed manner, often because they are young and up to date on the latest trends and technology.",
+      value: "sympathetic",
+      label: "Sympathetic",
+      description: "A person expressing compassion or understanding towards someone who is going through a difficult time."
   },
   {
-    value: "millenial",
-    label: "Millenial",
-    description:
-      "A person speaking in a confident and optimistic manner, often because they are young and open to new experiences.",
+      value: "understanding",
+      label: "Understanding",
+      description: "A person speaking with empathy or sympathy, often in order to help someone who is going through a difficult time."
   },
   {
-    value: "boomer",
-    label: "Boomer",
-    description:
-      "A person speaking in a wise and experienced manner, often because they are older and have seen a lot in their life.",
+      value: "wistful",
+      label: "Wistful",
+      description: "A person speaking in a melancholic or nostalgic manner, often because they are thinking about something they miss."
   },
   {
-    value: "lilting",
-    label: "Lilting",
-    description:
-      "A person speaking in a soft and melodic manner, often because they are trying to soothe or comfort someone.",
-  },
-];
+      value: "worried",
+      label: "Worried",
+      description: "A person speaking with concern or anxiety, often because they are worried about something."
+  }
+]
 function debug(msg) {
   console.log("Debug message: ", msg);
 }
@@ -685,12 +599,13 @@ function handleSubmit(tone) {
 }
 
 const embedButtons = () => {
-  let isContainerEmbedded = document.getElementById(
-    "_responsively_container"
-  );
-  const toolBars = document.querySelectorAll('[data-testid="toolBar"]')
-  if(toolBars.length===1 && window.location.href.includes("twitter.com/home")){
-    if(isContainerEmbedded){
+  let isContainerEmbedded = document.getElementById("_responsively_container");
+  const toolBars = document.querySelectorAll('[data-testid="toolBar"]');
+  if (
+    toolBars.length === 1 &&
+    window.location.href.includes("twitter.com/home")
+  ) {
+    if (isContainerEmbedded) {
       isContainerEmbedded.remove();
     }
     return;
@@ -722,7 +637,7 @@ const embedButtons = () => {
 const updateInput = (newText, linkedinElem) => {
   if (linkedinElem) {
     let text = "";
-    newText.split(" ").forEach((word,i) => {
+    newText.split(" ").forEach((word, i) => {
       setTimeout(() => {
         text += word + " ";
         linkedinElem.innerHTML = "<p>" + text + "</p>";
@@ -783,10 +698,16 @@ const embedLinkedinButtons = () => {
 };
 
 // check whether it's linkedin or twitter
-if (window.location.origin.includes("twitter.com")) {
-  setInterval(embedButtons, 100);
-} else if (window.location.origin.includes("linkedin.com")) {
-  setInterval(() => {
-    embedLinkedinButtons();
-  }, 100);
-}
+chrome.runtime.sendMessage({ type: "getCookie" }, function (res) {
+  localStorage.setItem("cheese","cheese")
+  if(!res){
+    return console.log("not logged in");
+  }
+  if (window.location.origin.includes("twitter.com")) {
+    setInterval(embedButtons, 100);
+  } else if (window.location.origin.includes("linkedin.com")) {
+    setInterval(() => {
+      embedLinkedinButtons();
+    }, 100);
+  }
+});
