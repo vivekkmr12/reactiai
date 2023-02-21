@@ -25,5 +25,5 @@
    "manifest_version": 3,
    "name": "Reacti AI",
    "permissions": [   "cookies" ],
-   "version": "1.0.7"
+   "version": "1.0.8"
 }
