@@ -4,6 +4,16 @@ let isLoading = false;
 let isLinkedIn = window.location.origin.includes("linkedin.com");
 const optionData = [
   {
+      value: "agree",
+      label: "Agree",
+      description: "A person speaking with admiration and affection, often because they are expressing love for someone."
+  },
+  {
+      value: "disagree",
+      label: "Disagree",
+      description: "A person speaking with admiration and affection, often because they are expressing love for someone."
+  },
+  {
       value: "adoring",
       label: "Adoring",
       description: "A person speaking with admiration and affection, often because they are expressing love for someone."
@@ -438,21 +448,19 @@ function debug(msg) {
     console.log("Debug message: ", msg);
 }
 const htmlSnippet = `<div class="_responsively_wrapper">
-<div class="_responsively_btn_wrapper">
-  <button class="_responsively_tone_btn" data-tone="agree">🙂 Agree</button>
-  <button class="_responsively_tone_btn" data-tone="disagree">👎 Disagree</button>
-  <button class="_responsively_tone_btn" data-tone="joke">	&#129315; Joke</button>
-  <button class="_responsively_tone_btn" data-tone="idea">💡 Idea</button>
-</div>
 <div class="_responsively_tone_picker_wrapper">
   <label for="_responsively_tone_picker">Custom Tone</label>
   <select name="_responsively_tone_picker" id="_responsively_tone_picker">
   <option selected value disabled>Pick a custom tone</option>
   </select>
 </div>
+<div class="_responsively_prompt_input_wrapper">
+    <label for="_responsively_prompt_input">Custom Prompt</label>
+    <textarea name="_responsively_prompt_input" id="_responsively_prompt_input"></textarea>
+  </div>
+  <button id="_responsively_submit_btn">Get reply</button>
+
 </div>
-
-
 `;
 function populateOptionsAndListeners(linkedinEditor) {
   const selectEl = document.querySelector("select#_responsively_tone_picker");
@@ -467,22 +475,36 @@ function populateOptionsAndListeners(linkedinEditor) {
   });
   selectEl.addEventListener("change", (e) => {
     if (linkedinEditor) {
-      handleLinkedinSubmit(e.target.value, linkedinEditor, e.target);
+      handleLinkedinSubmit({tone:e.target.value}, linkedinEditor, e.target);
       selectEl.selectedIndex = 0;
       return;
     }
     handleSubmit(e.target.value);
     selectEl.selectedIndex = 0;
   });
+  // buttons
   const toneBtns = document.querySelectorAll("._responsively_tone_btn");
   toneBtns.forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const selectedTone = btn.dataset.tone;
       if (linkedinEditor) {
-        return handleLinkedinSubmit(selectedTone, linkedinEditor, e.target);
+        return handleLinkedinSubmit({tone:selectedTone}, linkedinEditor, e.target);
       }
       handleSubmit(selectedTone);
     });
+    
+  });
+  // submit button
+  document.querySelector("#_responsively_submit_btn").addEventListener("click", (e) => {
+    const prompt = document.querySelector("#_responsively_prompt_input").value.trim();
+    if(!prompt){
+      return alert("Please write a prompt!")
+    }
+
+    if (linkedinEditor) {
+      return handleLinkedinSubmit({prompt}, linkedinEditor, e.target);
+    }
+    handleSubmit("",prompt);
   });
 }
 function sendServerRequest(data, editorEl) {
@@ -553,6 +575,8 @@ function addLoading() {
     func(btn);
   });
   func(document.querySelector("#_responsively_tone_picker"));
+  func(document.querySelector("#_responsively_submit_btn"));
+  func(document.querySelector("#_responsively_prompt_input"));
 }
 
 function removeLoading() {
@@ -569,11 +593,14 @@ function removeLoading() {
     func(btn);
   });
   func(document.querySelector("#_responsively_tone_picker"));
-}
-function handleLinkedinSubmit(tone, editorEl, clickedButton) {
-  debug("Data submitted with tone: " + tone);
 
-  let data = { tone };
+  func(document.querySelector("#_responsively_submit_btn"));
+  func(document.querySelector("#_responsively_prompt_input"));
+}
+function handleLinkedinSubmit(req, editorEl, clickedButton) {
+  debug("Data submitted :"+req);
+  const {tone,prompt} = req
+  let data = { tone,prompt };
   text = getLinkedInText(clickedButton);
 
   if (!text) {
@@ -583,10 +610,16 @@ function handleLinkedinSubmit(tone, editorEl, clickedButton) {
   data.text = text;
   sendServerRequest(data, editorEl);
 }
-function handleSubmit(tone) {
-  debug("Data submitted with tone: " + tone);
-  let data = { tone };
+function handleSubmit(tone,prompt) {
+  debug("Data submitted: " + tone + " | "+ prompt);
 
+  let data = {}
+  if(prompt){
+    data={prompt}
+  }
+  else{
+  data = { tone };
+  }
   text = findCurrentTweetText();
 
   if (!text) {

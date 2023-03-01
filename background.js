@@ -27,7 +27,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         return true;
       });
   }
-  if (!request.text && !request.tone) {
+  if (!request.text && (!request.tone || !request.prompt)) {
     return true;
   }
   (async () => {
@@ -49,6 +49,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       body: JSON.stringify({
         text: request.text,
         tone: request.tone,
+        prompt:request.prompt
       }),
     })
       .then((response) => response.json())
