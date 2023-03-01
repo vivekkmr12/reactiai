@@ -1,3 +1,4 @@
+import { HOST_URL } from "../config";
 import logo from "./../assets/128.png";
 import redirectIcon from "./../assets/redirect.svg";
 const Header = () => {
@@ -9,7 +10,7 @@ const Header = () => {
           React AI
         </h1>
       </div>
-      <a href={import.meta.env.VITE_HOST_URL} target="_blank" className="text-blue-400 underline text-base font-medium">
+      <a href={HOST_URL} target="_blank" className="text-blue-400 underline text-base font-medium">
         <span className="flex items-center">
         <img className="w-5 mr-1" src={redirectIcon} alt="" />
         Profile

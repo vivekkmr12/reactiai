@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react"
 import Header from "./components/Header";
 import OpenBoarding from "./components/OpenBoarding";
+import { HOST_URL, SERVER_URL } from "./config";
+
 function App() {
+  console.log({HOST_URL, SERVER_URL,ev:import.meta.env.VITE_ENV});
 const [openBoarding,setOpenBoarding] = useState(false);
 const [isLoading,setLoading] = useState(false);
 const [count,setCount] = useState(0);
@@ -15,14 +18,14 @@ useEffect(()=>{
   (async ()=>{
     setLoading(true)
   const fbSessionCookie =await chrome?.cookies?.get({
-    url:import.meta.env.VITE_HOST_URL,
+    url:HOST_URL,
     name:"fb-session"
   })
   if(!fbSessionCookie || !fbSessionCookie.value){
     setLoading(false)
     return console.log("No cookie found",{fbSessionCookie})
   }
-  const res = await fetch(import.meta.env.VITE_SERVER_URL + "/checkauth",{headers:{"fb-session":fbSessionCookie?.value}})
+  const res = await fetch(SERVER_URL + "/checkauth",{headers:{"fb-session":fbSessionCookie?.value}})
   const response = await res.json();
   console.log({responseFromTokenCheck:response});
   if(response.success){
@@ -34,7 +37,7 @@ useEffect(()=>{
   })()
 },[])
 const handleLogin = ()=>{
-  chrome?.tabs?.create({active: true, url: import.meta.env.VITE_HOST_URL+"/login"});
+  chrome?.tabs?.create({active: true, url: HOST_URL+"/login"});
 }
 
 if(!isAuthenticated){
