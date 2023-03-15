@@ -458,7 +458,7 @@ const htmlSnippet = `<div class="_responsively_wrapper">
     <label for="_responsively_prompt_input">Custom Prompt</label>
     <textarea name="_responsively_prompt_input" id="_responsively_prompt_input"></textarea>
   </div>
-  <button id="_responsively_submit_btn">Get reply</button>
+  <button id="_responsively_submit_btn" class="_responsively_submit_btn">Get reply</button>
 
 </div>
 `;
