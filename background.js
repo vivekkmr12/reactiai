@@ -1,5 +1,5 @@
-const production= true;
-const serverURL = production ? "https://funny-gray-worm.cyclic.app":"http://localhost:5000";
+const production= false;
+const serverURL = production ? "https://replyay.cyclic.app":"http://localhost:5000";
 const clientURL = production ?"https://react-ai-demo.netlify.app": "http://localhost:5173";
 const redirectToLoginPage=()=>{
   chrome?.cookies
@@ -27,7 +27,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         return true;
       });
   }
-  if (!request.text && (!request.tone || !request.prompt)) {
+  if (!request.text || !request.tone) {
     return true;
   }
   (async () => {
@@ -40,7 +40,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       return redirectToLoginPage()
 
     }
-    fetch(serverURL+"/fetchreply", {
+    fetch(serverURL+"/generatereply", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -49,7 +49,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       body: JSON.stringify({
         text: request.text,
         tone: request.tone,
-        prompt:request.prompt
+        comment:request.comment
       }),
     })
       .then((response) => response.json())

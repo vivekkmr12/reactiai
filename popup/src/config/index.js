@@ -1,0 +1,2 @@
+export const HOST_URL=import.meta.env.VITE_ENV === "development" ?  import.meta.env.VITE_LOCAL_HOST_URL:import.meta.env.VITE_HOST_URL 
+export const SERVER_URL=import.meta.env.VITE_ENV === "development" ?  import.meta.env.VITE_LOCAL_SERVER_URL:import.meta.env.VITE_SERVER_URL 
