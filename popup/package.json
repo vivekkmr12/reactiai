@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "rm  -r ../extension/assets ; vite build",
-    "build:prod": "rm  -r ../extension/assets ;VITE_ENV=production  vite build",
+    "build": "rm  -r ../assets ; vite build",
+    "build:prod": "rm  -r ../assets ;VITE_ENV=production  vite build",
     "preview": "vite preview"
   },
   "dependencies": {
