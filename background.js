@@ -1,6 +1,6 @@
-const production= false;
+const production= true;
 const serverURL = production ? "https://replyay.cyclic.app":"http://localhost:5000";
-const clientURL = production ?"https://react-ai-demo.netlify.app": "http://localhost:5173";
+const clientURL = production ?"https://reacti.ai": "http://localhost:5173";
 const redirectToLoginPage=()=>{
   chrome?.cookies
       ?.remove({
@@ -49,7 +49,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       body: JSON.stringify({
         text: request.text,
         tone: request.tone,
-        comment:request.comment
+        comment:request.comment,
+        language: request.language || "english"
       }),
     })
       .then((response) => response.json())

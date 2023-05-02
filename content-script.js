@@ -451,7 +451,7 @@ const htmlSnippet = `<div class="_responsively_wrapper">
 <div class="_responsively_row_1">
   <select name="_responsively_lang_picker" id="_responsively_lang_picker">
     <option value="hindi">Hindi</option>
-    <option value="english">English</option>
+    <option value="english" selected>English</option>
   </select>
 </div>
 <div class="_responsively_row_1">
@@ -629,6 +629,8 @@ function handleLinkedinSubmit(req, editorEl, clickedButton) {
     return;
   }
   data.text = text;
+  const languageSelector = document.getElementById("_responsively_lang_picker")
+  data.language = (languageSelector && languageSelector.value) ?languageSelector.value :"english";
   sendServerRequest(data, editorEl);
 }
 function handleSubmit({tone,comment}) {
@@ -643,6 +645,8 @@ function handleSubmit({tone,comment}) {
     return;
   }
   data.text = text;
+  const languageSelector = document.getElementById("_responsively_lang_picker")
+  data.language = (languageSelector && languageSelector.value) ?languageSelector.value :"english";
   sendServerRequest(data);
 }
 
@@ -750,6 +754,7 @@ const embedLinkedinButtons = () => {
 // check whether it's linkedin or twitter
 chrome.runtime.sendMessage({ type: "getCookie" }, function (res) {
   if(!res){
+    return;
   }
   if (window.location.origin.includes("twitter.com")) {
     setInterval(embedButtons, 500);

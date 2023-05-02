@@ -16,7 +16,7 @@
       "run_at": "document_start"
    } ],
    "description": "Extension for auto-replying using Chat-GPT",
-   "host_permissions": [ "http://localhost:5173/","https://react-ai-demo.netlify.app/" ],
+   "host_permissions": [ "http://localhost:5173/","https://react-ai-demo.netlify.app/","https://reacti.ai/" ],
    "icons": {
       "128": "icons/128.png",
       "16": "icons/16.png",
