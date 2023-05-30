@@ -1,6 +1,6 @@
-const production = false;
+const production = true;
 const serverURL = production
-  ? "https://replyay.cyclic.app"
+  ? "https://extension.server.reacti.ai"
   : "http://localhost:5000";
 const clientURL = production ? "https://reacti.ai" : "http://localhost:5173";
 const redirectToLoginPage = () => {
