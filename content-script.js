@@ -15,96 +15,193 @@ function debug(msg) {
   </div>
   <div class="_rp_row">
     <div class="_rp_tone_buttons_wrapper">
-      <button
-        class="_rp_button _rp_tone_button"
-        data-tone="agreeable"
-      >
-        Agree
-      </button>
-      <button
-        class="_rp_button _rp_tone_button"
-        data-tone="disagreeable"
-      >
-        Disagree
-      </button>
-      <button
-        class="_rp_button _rp_tone_button "
-        data-tone="angry"
-      >
-        Neutral
-      </button>
-      <button
-        class="_rp_button _rp_tone_button"
-        data-tone="sarcastic"
-      >
-        Friendly
-      </button>
-      <button
-        class="_rp_button _rp_tone_button"
-        data-tone="insightful"
-      >
-        Serious
-      </button>
-      <button
-        class="_rp_button _rp_tone_button hidden other"
-        data-tone="cautious"
-      >
-        Cautious
-      </button>
-      <button
-        class="_rp_button _rp_tone_button hidden other"
-        data-tone="encouraging"
-      >
-        Encouraging
-      </button>
-      <button
-        class="_rp_button _rp_tone_button hidden other"
-        data-tone="fascinated"
-      >
-        Fascinated
-      </button>
-      <button
-        class="_rp_button _rp_tone_button hidden other"
-        data-tone="sympathetic"
-      >
-        Sympathetic
-      </button>
-      <button
-        class="_rp_button _rp_tone_button hidden other"
-        data-tone="humble"
-      >
-        Humble
-      </button>
-      <button
-        class="_rp_button _rp_tone_button hidden other"
-        data-tone="inquisitive"
-      >
-        Fuuny
-      </button>
-      <button
-        class="_rp_button _rp_tone_button hidden other"
-        data-tone="lilting"
-      >
-        Sarcastic
-      </button>
-      <button
-        class="_rp_button _rp_tone_button hidden other"
-        data-tone="pleading"
-      >
-        congratulate
-      </button>
-      <button
-        class="_rp_button _rp_tone_button hidden other"
-        data-tone="supportive"
-      >
-        Supportive
-      </button>
-      <button
-        class="_rp_button _rp_tone_button hidden other"
-        data-tone="understanding"
-      >
-        Understanding
-      </button>
+    </button>
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="agree">
+      Agree
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="disagree">
+      Disagree
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="neutral">
+      Neutral
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="bullish (1 valid point)">
+      Bullish (1 valid point)
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="congrats (tag Twitter owner)">
+      Congrats (tag Twitter owner)
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="funny (tweet joke)">
+      Funny (tweet joke)
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="excited (with valid point)">
+      Excited (with valid point)
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="thoughtful (insights)">
+      Thoughtful (insights)
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="supportive (offering help)">
+      Supportive (offering help)
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="grateful (expressing gratitude)">
+      Grateful (expressing gratitude)
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="curious (seeking clarification)">
+      Curious (seeking clarification)
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="confident (asserting a point)">
+      Confident (asserting a point)
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="apologetic (offering apologies)">
+      Apologetic (offering apologies)
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="inspiring (motivating others)">
+      Inspiring (motivating others)
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="reflective (personal experience)">
+      Reflective (personal experience)
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="sarcastic (ironic reply)">
+      Sarcastic (ironic reply)
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="sympathetic (empathetic response)">
+      Sympathetic (empathetic response)
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="motivated (ready to take action)">
+      Motivated (ready to take action)
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="analytical (data-driven analysis)">
+      Analytical (data-driven analysis)
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="playful (light-hearted response)">
+      Playful (light-hearted response)
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="cautious (warning or advising)">
+      Cautious (warning or advising)
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="innovative (suggesting a new idea)">
+      Innovative (suggesting a new idea)
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="Bullish on Bitcoin with valid point with tweet context">
+      Bullish on Bitcoin with valid point with tweet context
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="relatable (shared experience)">
+      Relatable (shared experience)
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="MEME Reply Make Funny meme out of tweet context">
+      MEME Reply Make Funny meme out of tweet context
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="reassuring (offering reassurance)">
+      Reassuring (offering reassurance)
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="inquisitive (thought-provoking questions)">
+      Inquisitive (thought-provoking questions)
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="enthusiastic (with emoji)">
+      Enthusiastic (with emoji)
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="mysterious (cliffhanger)">
+      Mysterious (cliffhanger)
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="bold (bold statement)">
+      Bold (bold statement)
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="supportive (cheering on)">
+      Supportive (cheering on)
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="playful (engaging in wordplay)">
+      Playful (engaging in wordplay)
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="persuasive (convincing argument)">
+      Persuasive (convincing argument)
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="inclusive (promoting inclusivity)">
+      Inclusive (promoting inclusivity)
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="informal (using colloquial language)">
+      Informal (using colloquial language)
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="sarcastic (dry humor)">
+      Sarcastic (dry humor)
+    </button>
+    
+    </button>
+    <button class="_rp_button _rp_tone_button" data-tone="contemplative (deep pondering)">
+      Contemplative (deep pondering)
+    </button>
+    
+    
      
     </div>
   </div>
@@ -152,7 +249,7 @@ function debug(msg) {
           min="10"
           max="500"
           initial="10"
-          value="250"
+          value="200"
         />
       </div>
     </div>
@@ -412,7 +509,7 @@ function debug(msg) {
       data.characterLimit= 
       (rangeInput && rangeInput.value)
         ? rangeInput.value
-        : 250;
+        : 200;
     sendServerRequest(data);
   }
   const embedButtons = () => {
@@ -464,7 +561,7 @@ function debug(msg) {
         setTimeout(() => {
           text += word + " ";
           linkedinElem.innerHTML = "<p>" + text + "</p>";
-        }, i * 150);
+        }, i * 200);
       });
   
       return;
@@ -487,7 +584,7 @@ function debug(msg) {
     newText.split(" ").forEach((text, i) => {
       setTimeout(() => {
         func(text + " ");
-      }, i * 150);
+      }, i * 200);
     });
   };
   
